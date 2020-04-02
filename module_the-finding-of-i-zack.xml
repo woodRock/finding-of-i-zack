@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_the-finding-of-i-zack" default="compile.module.the-finding-of-i-zack">
+  <dirname property="module.the-finding-of-i-zack.basedir" file="${ant.file.module_the-finding-of-i-zack}"/>
+  
+  <property name="module.jdk.home.the-finding-of-i-zack" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.the-finding-of-i-zack" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.the-finding-of-i-zack" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.the-finding-of-i-zack" value="-encoding UTF-8 -source 12 -target 12 ${compiler.args}"/>
+  
+  <property name="the-finding-of-i-zack.output.dir" value="${module.the-finding-of-i-zack.basedir}/out/production/The-Finding-Of-I-Zack"/>
+  <property name="the-finding-of-i-zack.testoutput.dir" value="${module.the-finding-of-i-zack.basedir}/out/test/The-Finding-Of-I-Zack"/>
+  
+  <path id="the-finding-of-i-zack.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="the-finding-of-i-zack.module.production.classpath">
+    <path refid="${module.jdk.classpath.the-finding-of-i-zack}"/>
+  </path>
+  
+  <path id="the-finding-of-i-zack.runtime.production.module.classpath">
+    <pathelement location="${the-finding-of-i-zack.output.dir}"/>
+  </path>
+  
+  <path id="the-finding-of-i-zack.module.classpath">
+    <path refid="${module.jdk.classpath.the-finding-of-i-zack}"/>
+    <pathelement location="${the-finding-of-i-zack.output.dir}"/>
+  </path>
+  
+  <path id="the-finding-of-i-zack.runtime.module.classpath">
+    <pathelement location="${the-finding-of-i-zack.testoutput.dir}"/>
+    <pathelement location="${the-finding-of-i-zack.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.the-finding-of-i-zack">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.the-finding-of-i-zack">
+    <patternset refid="excluded.from.module.the-finding-of-i-zack"/>
+  </patternset>
+  
+  
+  <target name="compile.module.the-finding-of-i-zack" depends="compile.module.the-finding-of-i-zack.production,compile.module.the-finding-of-i-zack.tests" description="Compile module The-Finding-Of-I-Zack"/>
+  
+  <target name="compile.module.the-finding-of-i-zack.production" depends="register.custom.compilers" description="Compile module The-Finding-Of-I-Zack; production classes"/>
+  
+  <target name="compile.module.the-finding-of-i-zack.tests" depends="register.custom.compilers,compile.module.the-finding-of-i-zack.production" description="compile module The-Finding-Of-I-Zack; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.the-finding-of-i-zack" description="cleanup module">
+    <delete dir="${the-finding-of-i-zack.output.dir}"/>
+    <delete dir="${the-finding-of-i-zack.testoutput.dir}"/>
+  </target>
+</project>

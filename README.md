@@ -1,4 +1,4 @@
-The Finding of I, Zack
+# The Finding of I, Zack
 
 The player used WASD to move their character and the arrow keys to fire directionally.
 The goal of the game is to find the exit, to do this they must walk through multiple rooms, fighting enemies and collecting items which provide benefits to the player (eg. more damage). These retrievable items will appear visually onto the player.
