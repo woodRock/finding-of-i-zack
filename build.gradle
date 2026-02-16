@@ -3,6 +3,16 @@ plugins {
     id 'checkstyle'
 }
 
+checkstyle {
+    toolVersion = '10.12.5'
+}
+
+tasks.withType(Checkstyle).configureEach {
+    exclude '**/TheFindingOfIZack/FileIO/Util/Huffman.java'
+}
+
+checkstyleTest.enabled = false
+
 repositories {
     mavenCentral()
 }

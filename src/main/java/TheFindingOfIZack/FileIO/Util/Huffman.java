@@ -125,7 +125,7 @@ public class  Huffman {
      * @param text
      * @return
      */
-    private Map frequencyMap(String text){
+    private Map<Character, Integer> frequencyMap(String text){
         HashMap<Character,Integer> frequency = new HashMap<>();
 
         for (int i = 0; i < text.length(); i++){

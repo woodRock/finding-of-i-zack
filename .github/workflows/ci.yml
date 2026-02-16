@@ -24,11 +24,18 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    - name: Build with Gradle
-      run: ./gradlew build
+    - name: Build and Test with Gradle
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y xvfb
+        xvfb-run ./gradlew build
 
-    - name: Run Tests
-      run: ./gradlew test
+    - name: Upload Test Report
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-report
+        path: build/reports/tests/test/
 
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
@@ -49,4 +56,4 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Lint with Checkstyle
-      run: ./gradlew checkstyleMain --continue || true # Continue even if lint fails initially
+      run: ./gradlew checkstyleMain --continue
