@@ -1,90 +1,75 @@
-# The Finding of I, Zack
+# The Finding of IZack
 
-The player used WASD to move their character and the arrow keys to fire directionally.
-The goal of the game is to find the exit, to do this they must walk through multiple rooms, fighting enemies and collecting items which provide benefits to the player (eg. more damage). These retrievable items will appear visually onto the player.
+[![Java CI with Gradle](https://github.com/woodj/finding-of-i-zack/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/woodj/finding-of-i-zack/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+A 2D top-down dungeon crawler game developed in Java using Swing and AWT. Navigate through rooms, defeat enemies, collect items, and defeat the final boss.
 
-Libraries:
-SWING for GUI because we are familiar with it and has enough tools to produce the desired outcome.
+## 🚀 Features
 
-JavaFX as a possible alternative.
+- **Fixed Save/Load System:** Robust serialization that preserves game state, player attributes, and room configurations.
+- **Dynamic Dungeon Generation:** Randomly generated room contents and enemy placements.
+- **Diverse Enemies:** Multiple enemy types with unique movement and attack behaviors.
+- **Combat System:** Projectile-based combat with upgrades and item interaction.
 
-JUnit will be used for all of our testing.
+## 🛠️ Prerequisites
 
-Library Discussion
+- **Java JDK:** 17 or newer (Fully compatible with Java 25).
+- **Gradle:** 9.3.1 (Included via Gradle Wrapper).
 
-Saving/loading/info
+## 📥 Installation
 
-Author: Jesse
+Clone the repository to your local machine:
 
-Reviewer: Theo
+```bash
+git clone https://github.com/woodj/finding-of-i-zack.git
+cd finding-of-i-zack
+```
 
-Tester: Bryn
+## 🎮 How to Run
 
-    Take the current state of all elements in the game and save them to a file and also handle loading from a file.
+You can run the game directly using the provided Gradle Wrapper:
 
+```bash
+./gradlew run
+```
 
+## 🏗️ Building and Testing
 
+### Build the project
+Generates an executable JAR in `build/libs/`.
+```bash
+./gradlew build
+```
 
-The TheFindingOfIZack.World or whatever?
+### Run Tests
+Executes the JUnit 4 test suite.
+```bash
+./gradlew test
+```
 
-Author: Ryan
+### Linting
+Check code quality using Checkstyle.
+```bash
+./gradlew checkstyleMain
+```
 
-Reviewer: Jesse
+## ⌨️ Controls
 
-Tester: Theo
+| Action | Key |
+| :--- | :--- |
+| **Movement** | `W`, `A`, `S`, `D` |
+| **Shoot** | Arrow Keys (Up, Left, Down, Right) |
+| **Menu / Pause** | `ESC` |
+| **Interact** | Collision-based |
 
-    Levels
-    Rooms(item locations etc.)
+## 📁 Repository Structure
 
+- `src/main/java`: Core game logic and engine.
+- `src/main/resources`: Game assets (sprites, backgrounds, icons).
+- `src/test/java`: Comprehensive JUnit test suite.
+- `.github/workflows`: Automated CI/CD pipelines.
 
-TheFindingOfIZack.TheFindingOfIZack.Entities/TheFindingOfIZack.Items
+## 📄 License
 
-Author: Ben
-
-Reviewer: Ryan
-
-Tester: Jesse
-
-    Health
-    Position
-    TheFindingOfIZack.Behaviour - (This is its own library)
-    Player
-    Different enemy flavours, just cabbage things/bosses
-    TheFindingOfIZack.Items   (Effect on player
-            Position in game
-            Maybe like a weight/size thing maybe?
-            Health pickups)
-
-TheFindingOfIZack.View
-Author: Bryn
-
-Reviewer: Ben
-
-Tester: Ryan
-
-    Throws everything together
-    JFrame or whatever
-    Lots of panels
-    Open menu pause menu etc.
-    Show player score/health/equipped items
-    
-TheFindingOfIZack.Behaviour
-
-Author: Theo
-
-Reviewer: Bryn
-
-Tester: Ben
-
-    AI movements etc.
-    Keyboard input for player
-    Collisions with walls/obstaTester:cles 
-
-
-Other things to do
-
-    Make it all pretty
-    Make a story
-    Add some phat beats maybe
-    
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

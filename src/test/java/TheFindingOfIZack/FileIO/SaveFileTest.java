@@ -24,10 +24,10 @@ public class SaveFileTest {
     public void test01_createSaveFile(){
         try {
             Game game = new Game(new Player(new Point(GameDimensions.GAME_WIDTH /2 - 20, GameDimensions.GAME_HEIGHT/2 - 20)));
+            game.createLevelOne();
             File tempFile = File.createTempFile("testSaveOnly", ".zack");
             SaveFile testSaveFile = new SaveFile(game, tempFile);
-            assertTrue(new File(tempFile.getAbsolutePath() + ".zack").exists());
-            new File(tempFile.getAbsolutePath() + ".zack").delete();
+            assertTrue(tempFile.exists());
             tempFile.delete();
         } catch (Exception e) {
             fail(e.getMessage());

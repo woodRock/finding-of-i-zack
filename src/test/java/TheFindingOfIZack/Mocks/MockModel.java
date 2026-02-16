@@ -90,6 +90,11 @@ public class MockModel implements Model {
         public boolean getKey() {
             return false;
         }
+
+        @Override
+        public int getKeys() {
+            return 0;
+        }
         
     };
 

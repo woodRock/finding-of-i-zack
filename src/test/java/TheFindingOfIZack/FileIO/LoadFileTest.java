@@ -31,7 +31,7 @@ public class LoadFileTest {
             File tempFile = File.createTempFile("testSave", ".zack");
             SaveFile saveFile = new SaveFile(game, tempFile);
 
-            LoadFile testLoadFile = new LoadFile(new File(tempFile.getAbsolutePath() + ".zack"));
+            LoadFile testLoadFile = new LoadFile(tempFile);
             assertTrue("There should be a game",testLoadFile.getGame() != null);
             assertTrue("There should be a player",testLoadFile.getGame().getPlayer() != null);
             assertTrue("Player Health should be" + p.getHealth(),testLoadFile.getGame().getPlayer().getHealth() == p.getHealth());
@@ -40,7 +40,6 @@ public class LoadFileTest {
             if (p.getRoom() != null){
                 assertTrue("If player previously had a room it should still have a room",testLoadFile.getGame().getPlayer().getRoom() != null);
             }
-            new File(tempFile.getAbsolutePath() + ".zack").delete();
             tempFile.delete();
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,12 +55,11 @@ public class LoadFileTest {
             File tempFile = File.createTempFile("testSaveDefault", ".zack");
             SaveFile saveFile = new SaveFile(game, tempFile);
 
-            LoadFile testLoadFile = new LoadFile(new File(tempFile.getAbsolutePath() + ".zack"));
+            LoadFile testLoadFile = new LoadFile(tempFile);
             assertTrue("There should be a game",testLoadFile.getGame() != null);
             assertTrue("There should be a player",testLoadFile.getGame().getPlayer() != null);
             assertTrue("Player Health should be" + p.getHealth(),testLoadFile.getGame().getPlayer().getHealth() == p.getHealth());
             assertTrue( "Player Armour should be" + p.getArmour(), testLoadFile.getGame().getPlayer().getArmour() ==  p.getArmour());
-            new File(tempFile.getAbsolutePath() + ".zack").delete();
             tempFile.delete();
         } catch (Exception e) {
             e.printStackTrace();

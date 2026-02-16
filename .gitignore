@@ -1,6 +1,18 @@
+# IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
 
-.idea/misc.xml
-.idea/modules.xml
-.idea/vcs.xml
-.idea/workspace.xml
-The-Finding-of-I-Zack.iml
+# Gradle
+.gradle/
+build/
+
+# macOS
+.DS_Store
+
+# Java
+*.class
+
+# Save files
+saves/

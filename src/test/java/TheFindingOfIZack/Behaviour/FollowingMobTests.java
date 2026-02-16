@@ -38,6 +38,7 @@ public class FollowingMobTests {
     @Test
     public void testStep() throws Exception {
         Player p = new Player(new Point(200,200));
+        p.setRoom(new TheFindingOfIZack.World.Rooms.standardRoom());
         MobEnemy m;
         Point location;
         Point newlocation;
