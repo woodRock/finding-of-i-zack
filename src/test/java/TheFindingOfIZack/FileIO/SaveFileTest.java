@@ -7,6 +7,9 @@ import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.World.Game;
 import org.junit.Test;
 
+import java.io.File;
+
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 /**
@@ -20,9 +23,13 @@ public class SaveFileTest {
     @Test
     public void test01_createSaveFile(){
         try {
-            SaveFile testSaveFile = new SaveFile(new Game(new Player(new Point(GameDimensions.GAME_WIDTH /2 - 20, GameDimensions.GAME_HEIGHT/2 - 20))));
-
-        } catch (InvalidFileException e) {
+            Game game = new Game(new Player(new Point(GameDimensions.GAME_WIDTH /2 - 20, GameDimensions.GAME_HEIGHT/2 - 20)));
+            File tempFile = File.createTempFile("testSaveOnly", ".zack");
+            SaveFile testSaveFile = new SaveFile(game, tempFile);
+            assertTrue(new File(tempFile.getAbsolutePath() + ".zack").exists());
+            new File(tempFile.getAbsolutePath() + ".zack").delete();
+            tempFile.delete();
+        } catch (Exception e) {
             fail(e.getMessage());
         }
     }

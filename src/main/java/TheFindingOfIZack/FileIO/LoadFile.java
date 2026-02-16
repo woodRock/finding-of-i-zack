@@ -22,19 +22,23 @@ public class LoadFile extends GameFile{
     private Game game = null;
 
     public LoadFile() throws InvalidFileException {
-        game = execute();
+        if (openFile(parent)) {
+            game = execute(file);
+        }
+    }
+
+    public LoadFile(File f) throws InvalidFileException {
+        game = execute(f);
     }
 
     /**
      *  This method chooses the File to be loaded, and verifies
      *  the integrity of the .ZACK file
      */
-    public Game execute() throws InvalidFileException{
+    public Game execute(File f) throws InvalidFileException{
         ObjectInputStream obIn = null;
         Game game;
-        boolean isValidFile = openFile(parent);
-        if (!isValidFile)
-            return null;
+        file = f;
         try {
             obIn = new ObjectInputStream(new FileInputStream(file));
         } catch (IOException e) {
@@ -46,7 +50,7 @@ public class LoadFile extends GameFile{
             throw new InvalidFileException("Object Input is null");
 
         game = readGame(obIn);
-        Player player = new Player(readPlayer(obIn));
+        Player player = readPlayer(obIn);
         Level level = readLevel(obIn);
         Room room= readRoom(obIn);
         ArrayList<Door> doors = readDoors(obIn);
@@ -66,14 +70,16 @@ public class LoadFile extends GameFile{
      * @param obIn object input stream
      * @return the loaded Level
      */
-    public Room readRoom(ObjectInput obIn){
+    public Room readRoom(ObjectInput obIn) throws InvalidFileException {
         Room r = null;
         try {
             r = (Room) obIn.readObject();
         } catch (ClassNotFoundException e) {
-            fileError("Reading Level: " + e.getLocalizedMessage());
+            fileError("Reading Room: " + e.getLocalizedMessage());
+            throw new InvalidFileException("Reading Room");
         } catch (IOException e) {
-            fileError("Reading Level: " + e.getLocalizedMessage());
+            fileError("Reading Room: " + e.getLocalizedMessage());
+            throw new InvalidFileException("Reading Room");
         }
         return r;
     }

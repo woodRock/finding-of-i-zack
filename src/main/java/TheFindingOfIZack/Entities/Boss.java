@@ -1,7 +1,7 @@
 package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.Util.Point;
-import javafx.geometry.BoundingBox;
+import TheFindingOfIZack.Util.SimpleBoundingBox;
 
 import java.awt.*;
 
@@ -33,7 +33,7 @@ public class Boss extends Enemy {
      */
     @Override
     public void setBox() {
-        this.box = new BoundingBox(location.getX(), location.getY(), size, size);
+        this.box = new SimpleBoundingBox(location.getX(), location.getY(), size, size);
     }
 
     /**
@@ -100,7 +100,7 @@ public class Boss extends Enemy {
         // also checks if mob is currently touching player
         if(!collision(this.getBoundingBox())) {
             this.location = potentialStep;
-            this.box = new BoundingBox(potentialStep.getX(), potentialStep.getY(), this.size, this.size);
+            this.box = new SimpleBoundingBox(potentialStep.getX(), potentialStep.getY(), this.size, this.size);
             setBox();
         }
         wallCheck();

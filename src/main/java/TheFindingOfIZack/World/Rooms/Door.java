@@ -6,6 +6,8 @@ import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.View.Drawable;
 
 import java.awt.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 /**
  * Created by fieldryan on 27/09/17.
@@ -23,6 +25,15 @@ public class Door implements Drawable, Savable {
     public boolean isLocked;
     public boolean bossDoor;
     public boolean needsKey;
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        initialiseOPenImage();
+        initialiseClosedImage();
+        if (destination instanceof bossRoom) {
+            this.lockedDoorImage = ImageLoader.loadImage("/lockedDoor.png");
+        }
+    }
 
 
 

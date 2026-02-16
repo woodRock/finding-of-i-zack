@@ -2,10 +2,12 @@ package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.Point;
+import TheFindingOfIZack.Util.SimpleBoundingBox;
 import TheFindingOfIZack.View.Drawable;
-import javafx.geometry.BoundingBox;
 
 import java.awt.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 
 /**
@@ -18,10 +20,15 @@ public abstract class Entity implements Drawable, Savable{
      */
 
     protected TheFindingOfIZack.Util.Point location;
-    protected transient BoundingBox box;
+    protected transient SimpleBoundingBox box;
 
     public static int DEFAULT_WIDTH = 40;
     public int width = DEFAULT_WIDTH;
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        setBox();
+    }
 
     public Entity(){}
 
@@ -36,7 +43,7 @@ public abstract class Entity implements Drawable, Savable{
      */
     public Entity(TheFindingOfIZack.Util.Point location) {
         this.location = location;
-        this.box = new BoundingBox(location.getX(), location.getY(), width, width);
+        this.box = new SimpleBoundingBox(location.getX(), location.getY(), width, width);
     }
 
     /**
@@ -57,14 +64,14 @@ public abstract class Entity implements Drawable, Savable{
      * Sets the bounding box
      */
     public void setBox() {
-        this.box = new BoundingBox(location.getX(), location.getY(), width, width);
+        this.box = new SimpleBoundingBox(location.getX(), location.getY(), width, width);
     }
 
     /**
      * Returns the entity bounding box
      * @return  box
      */
-    public BoundingBox getBoundingBox(){
+    public SimpleBoundingBox getBoundingBox(){
         return box;
     }
 

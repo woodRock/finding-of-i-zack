@@ -79,11 +79,12 @@ public class Player extends AbstractPlayer {
         this.room = p.getRoom();
         this.health = p.getHealth();
         this.speed = p.getSpeed();
-        this.key = (p.getKey())? 1:0;
+        this.key = p.getKeys();
         this.damage = p.getDamage();
         this.weaponTick = p.weaponTick;
         this.fireRate = p.fireRate;
         this.won = false;
+        this.projectiles = Collections.synchronizedList(new ArrayList<Projectile>());
     }
 
     public void setWon(){
@@ -91,6 +92,11 @@ public class Player extends AbstractPlayer {
     }
     public boolean hasWon(){
         return this.won;
+    }
+
+    private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        this.projectiles = Collections.synchronizedList(new ArrayList<Projectile>());
     }
 
     /**
@@ -522,6 +528,11 @@ public class Player extends AbstractPlayer {
 
     public boolean getKey(){
         return key > 0;
+    }
+
+    @Override
+    public int getKeys() {
+        return key;
     }
 
 

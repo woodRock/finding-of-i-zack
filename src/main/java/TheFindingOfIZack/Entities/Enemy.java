@@ -5,8 +5,8 @@ import TheFindingOfIZack.Behaviour.MobProjectile;
 import TheFindingOfIZack.Behaviour.MobShooter;
 import TheFindingOfIZack.Behaviour.MobType;
 import TheFindingOfIZack.Util.Point;
+import TheFindingOfIZack.Util.SimpleBoundingBox;
 import TheFindingOfIZack.World.Rooms.Room;
-import javafx.geometry.BoundingBox;
 
 import java.awt.*;
 
@@ -122,9 +122,9 @@ public class Enemy extends Entity {
 
     /**
      * Determines if the player and any mob have collided
-     * @param b BoundingBox BondingBox of the Enemy
+     * @param b SimpleBoundingBox BondingBox of the Enemy
      */
-    public boolean collision(BoundingBox b) {
+    public boolean collision(SimpleBoundingBox b) {
         return b.intersects(this.player.getBoundingBox());
     }
 

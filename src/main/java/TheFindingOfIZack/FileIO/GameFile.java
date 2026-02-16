@@ -75,8 +75,7 @@ public class GameFile {
     /**
      * This stores the directory for all of the .zack GameFiles
      */
-    // TODO: 9/26/17 Change this to YOUR directory for save files
-    protected static final String DIRECTORY = "/home/rocktopus/Documents/tri2/swen222/IZack/saves";
+    protected static final String DIRECTORY = System.getProperty("user.dir") + File.separator + "saves";
 
     /**
      * This stores the file header for each of the Gamefiles

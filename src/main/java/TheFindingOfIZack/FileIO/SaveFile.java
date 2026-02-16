@@ -26,20 +26,29 @@ public class SaveFile extends GameFile {
 
     public SaveFile(Game g) throws InvalidFileException{
         game = g;
-        execute(game);
+        if (saveFile(parent)) {
+            execute(game, file);
+        }
+    }
+
+    public SaveFile(Game g, File f) throws InvalidFileException {
+        game = g;
+        execute(game, f);
     }
 
     /**
      *  This method chooses the File to saved, and verifies
      *  the integrity of the .ZACK file
      */
-    public void execute(Game g) throws InvalidFileException{
+    public void execute(Game g, File f) throws InvalidFileException{
         ObjectOutputStream obOut = null;
-        boolean isValidFile = saveFile(parent);
-        if (!isValidFile)
-            return;
+        file = f;
+        String path = file.getAbsolutePath();
+        if (!path.toLowerCase().endsWith(EXTENSION)) {
+            path += EXTENSION;
+        }
         try {
-            obOut = new ObjectOutputStream(new FileOutputStream(file+EXTENSION));
+            obOut = new ObjectOutputStream(new FileOutputStream(path));
         } catch (IOException e) {
             fileError("Failed to execute" + e.getLocalizedMessage());
             throw new InvalidFileException("Object Output Stream is null");

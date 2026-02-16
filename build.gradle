@@ -1,6 +1,5 @@
 plugins {
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.7'
 }
 
 repositories {
@@ -10,10 +9,5 @@ repositories {
 dependencies {
 }
 
-javafx {
-    version = "12"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
-}
-
 // Define the main class for the application
-mainClassName = 'TheFindingOfIZac.Main'
+mainClassName = 'TheFindingOfIZack.Main'

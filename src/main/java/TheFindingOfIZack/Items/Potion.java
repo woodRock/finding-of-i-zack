@@ -13,11 +13,14 @@ public class Potion extends Item implements Savable{
 
     private static Image potionImage;
 
+    static {
+        potionImage = ImageLoader.loadImage("/potion.png");
+    }
+
     private int health = 25;
 
     public Potion(Player p) {
         super("potion", p);
-        this.potionImage = ImageLoader.loadImage("/potion.png");
     }
 
     /**

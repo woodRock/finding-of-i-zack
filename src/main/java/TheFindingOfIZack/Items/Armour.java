@@ -11,13 +11,16 @@ import java.awt.*;
  */
 public class Armour extends Item implements Savable {
 
-    private static transient Image armourImage;
+    private static Image armourImage;
+
+    static {
+        armourImage = ImageLoader.loadImage("/armour.png");
+    }
 
     private int armour = 5;
 
     public Armour(Player p) {
         super("armour", p);
-        this.armourImage = ImageLoader.loadImage("/armour.png");
     }
 
     /**

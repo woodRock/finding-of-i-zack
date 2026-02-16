@@ -13,9 +13,12 @@ public class Weapon extends Item implements Savable {
 
     private static Image weaponImage;
 
+    static {
+        weaponImage = ImageLoader.loadImage("/sword.png");
+    }
+
     public Weapon(Player p) {
         super("weapon", p);
-        this.weaponImage = ImageLoader.loadImage("/sword.png");
     }
 
     /**

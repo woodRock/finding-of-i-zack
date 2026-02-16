@@ -92,6 +92,12 @@ public abstract class AbstractPlayer extends Entity implements Savable {
     public abstract boolean getKey();
 
     /**
+     * Get the number of keys the player has
+     * @return number of keys
+     */
+    public abstract int getKeys();
+
+    /**
      * Check if the player is dead
      * @return  true if dead
      */

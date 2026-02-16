@@ -13,9 +13,12 @@ public class Key extends Item implements Savable {
 
     private static Image keyImage;
 
+    static {
+        keyImage = ImageLoader.loadImage("/doorKey.png");
+    }
+
     public Key(Player p) {
         super("key", p);
-        this.keyImage = ImageLoader.loadImage("/doorKey.png");
     }
 
     /**

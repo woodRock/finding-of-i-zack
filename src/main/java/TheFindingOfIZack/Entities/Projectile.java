@@ -4,8 +4,8 @@ import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.Util.Point;
+import TheFindingOfIZack.Util.SimpleBoundingBox;
 import TheFindingOfIZack.View.Drawable;
-import javafx.geometry.BoundingBox;
 
 import java.awt.*;
 import java.util.List;
@@ -89,7 +89,7 @@ public class Projectile extends Entity implements Drawable, Savable{
      */
     @Override
     public void setBox() {
-        this.box = new BoundingBox(location.getX()+width/4, location.getY()+width/4, width/2, width/2);
+        this.box = new SimpleBoundingBox(location.getX()+width/4, location.getY()+width/4, width/2, width/2);
     }
 
     /**
