@@ -25,3 +25,11 @@ dependencies {
 application {
     mainClass = 'TheFindingOfIZack.Main'
 }
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'TheFindingOfIZack.Main'
+        )
+    }
+}

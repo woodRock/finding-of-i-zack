@@ -42,6 +42,12 @@ Generates an executable JAR in `build/libs/`.
 ./gradlew build
 ```
 
+### Run the executable JAR
+After building, you can run the standalone JAR:
+```bash
+java -jar build/libs/The-Finding-Of-I-Zack.jar
+```
+
 ### Run Tests
 Executes the JUnit 4 test suite.
 ```bash
